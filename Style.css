@@ -1,0 +1,29 @@
+.header {
+    text-align: center;
+}
+
+.buttons {
+   display: flex; 
+   justify-content: space-evenly;
+}
+
+.rockbutton {
+    width: 15%;
+    height: 100px;
+}
+
+.paperbutton {
+    width: 15%;
+    height: 100px;
+}
+
+.scissorbutton {
+    width: 15%;
+    height: 100px;
+}
+
+
+
+.score {
+   display: flex; 
+}
