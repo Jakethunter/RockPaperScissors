@@ -1,3 +1,6 @@
+let humanScore = 0;
+let computerScore = 0;
+
 function getComputerChoice() {
 let computer = Math.random();
     if (computer < 0.33) {
@@ -11,13 +14,27 @@ let computer = Math.random();
     return computer;
 }
 
+let scoreBoard;
+let humanScoreCounter;
+let computerScoreCounter;
+let announceWinner;
 
 document.addEventListener("DOMContentLoaded", () => {
     const buttonDiv = document.querySelector(".buttons");
-    const ComputerScoreCounter = document.querySelector(".Computer")
-    const humanScoreCounter = document.querySelector(".human")
+    computerScoreCounter = document.createElement("h6")
+    humanScoreCounter = document.createElement("h6")
+    scoreBoard = document.querySelector(".scoreBoard")
+    humanScoreCounter.setAttribute("class", "HumanScore")
+    computerScoreCounter.setAttribute("class", "ComputerScore")
+    announceWinner = document.querySelector(".winner")
+    scoreBoard.appendChild(humanScoreCounter);
+    scoreBoard.appendChild(computerScoreCounter);
     buttonDiv.addEventListener("click", getHumanChoice);
+
 });
+
+
+
 
 function getHumanChoice(event) {
     let target = event.target;
@@ -38,8 +55,6 @@ function getHumanChoice(event) {
 }
 
 
-let humanScore = 0;
-let computerScore = 0;
 
 
 
@@ -71,22 +86,15 @@ function playRound(humanChoice, computerChoice) {
                 console.log("You Win!")
                 humanScore = humanScore + 1
             }
-    }   else {
-        console.log("Invalid Choice, please refresh and follow instructions")
-    }
-}
+    }  
+    humanScoreCounter.textContent = `Human Score = ${humanScore}`;
+    computerScoreCounter.textContent = `Computer Score = ${computerScore}`;
 
-function playGame() {
-    playRound(getHumanChoice(), getComputerChoice())
-    playRound(getHumanChoice(), getComputerChoice())
-    playRound(getHumanChoice(), getComputerChoice())
-    playRound(getHumanChoice(), getComputerChoice())
-    playRound(getHumanChoice(), getComputerChoice())
-        if (humanScore > computerScore) {
-            console.log("You Win")
-        }   else if (humanScore < computerScore) {
-            console.log("Computer Wins")
-        } else {
-            console.log("its a tie")
-        }
+    if (humanScore === 5) {
+        announceWinner.textContent = "You Win!"
+    }
+    if (computerScore === 5) {
+        announceWinner.textContent = "computer Wins!"
+    }
+
 }

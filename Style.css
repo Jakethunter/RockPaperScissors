@@ -22,8 +22,7 @@
     height: 100px;
 }
 
-
-
-.score {
+.scoreBoard {
    display: flex; 
+   gap: 10px;
 }
